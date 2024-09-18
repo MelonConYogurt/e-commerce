@@ -368,12 +368,13 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'product';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String &
+    name: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 1;
@@ -401,8 +402,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
         maxLength: 250;
       }>;
     description: Attribute.Text & Attribute.Required;
-    colors: Attribute.JSON;
     media: Attribute.Media<'images', true> & Attribute.Required;
+    colors: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
