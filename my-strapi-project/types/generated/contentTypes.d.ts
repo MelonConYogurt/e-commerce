@@ -404,6 +404,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     media: Attribute.Media<'images', true> & Attribute.Required;
     colors: Attribute.JSON;
+    slug: Attribute.UID<'api::product.product', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
