@@ -362,6 +362,42 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiColorColor extends Schema.CollectionType {
+  collectionName: 'colors';
+  info: {
+    singularName: 'color';
+    pluralName: 'colors';
+    displayName: 'color';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    products: Attribute.Relation<
+      'api::color.color',
+      'manyToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::color.color',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::color.color',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -404,7 +440,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       }>;
     description: Attribute.Text & Attribute.Required;
     media: Attribute.Media<'images', true> & Attribute.Required;
-    colors: Attribute.JSON;
     slug: Attribute.UID<'api::product.product', 'name'> & Attribute.Required;
     gender: Attribute.Enumeration<['Hombre', 'Mujer']> &
       Attribute.Required &
@@ -414,6 +449,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     stocksize7: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     company: Attribute.Enumeration<['Nike', 'Adidas']> &
       Attribute.DefaultTo<'Nike'>;
+    colors: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::color.color'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -868,6 +908,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::color.color': ApiColorColor;
       'api::product.product': ApiProductProduct;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

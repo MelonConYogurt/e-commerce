@@ -46,9 +46,6 @@
         "images"
       ]
     },
-    "colors": {
-      "type": "json"
-    },
     "slug": {
       "type": "uid",
       "targetField": "name",
@@ -82,6 +79,12 @@
         "Adidas"
       ],
       "default": "Nike"
+    },
+    "colors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::color.color",
+      "mappedBy": "products"
     }
   }
 }
