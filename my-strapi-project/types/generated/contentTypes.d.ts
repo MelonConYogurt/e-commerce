@@ -388,14 +388,15 @@ export interface ApiProductProduct extends Schema.CollectionType {
         },
         string
       >;
-    stock: Attribute.BigInteger &
+    stocksize10: Attribute.BigInteger &
       Attribute.Required &
       Attribute.SetMinMax<
         {
           min: '0';
         },
         string
-      >;
+      > &
+      Attribute.DefaultTo<'0'>;
     introduction: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
@@ -405,6 +406,14 @@ export interface ApiProductProduct extends Schema.CollectionType {
     media: Attribute.Media<'images', true> & Attribute.Required;
     colors: Attribute.JSON;
     slug: Attribute.UID<'api::product.product', 'name'> & Attribute.Required;
+    gender: Attribute.Enumeration<['Hombre', 'Mujer']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Hombre'>;
+    stocksize9: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    stocksize8: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    stocksize7: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    company: Attribute.Enumeration<['Nike', 'Adidas ']> &
+      Attribute.DefaultTo<'Nike'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
