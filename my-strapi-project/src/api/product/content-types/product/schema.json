@@ -79,7 +79,7 @@
       "type": "enumeration",
       "enum": [
         "Nike",
-        "Adidas "
+        "Adidas"
       ],
       "default": "Nike"
     }

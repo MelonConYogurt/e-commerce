@@ -412,7 +412,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     stocksize9: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     stocksize8: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     stocksize7: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
-    company: Attribute.Enumeration<['Nike', 'Adidas ']> &
+    company: Attribute.Enumeration<['Nike', 'Adidas']> &
       Attribute.DefaultTo<'Nike'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
