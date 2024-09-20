@@ -47,9 +47,8 @@
     },
     "colors": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::color.color",
-      "mappedBy": "products"
+      "relation": "oneToMany",
+      "target": "api::color.color"
     },
     "discount": {
       "type": "biginteger"

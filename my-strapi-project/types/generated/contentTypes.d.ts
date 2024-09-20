@@ -831,11 +831,6 @@ export interface ApiColorColor extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    products: Attribute.Relation<
-      'api::color.color',
-      'manyToMany',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -920,7 +915,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     slug: Attribute.UID<'api::product.product', 'name'> & Attribute.Required;
     colors: Attribute.Relation<
       'api::product.product',
-      'manyToMany',
+      'oneToMany',
       'api::color.color'
     >;
     discount: Attribute.BigInteger;
