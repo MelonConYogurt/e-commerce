@@ -23,12 +23,6 @@
       "required": true,
       "min": "0"
     },
-    "stocksize10": {
-      "type": "biginteger",
-      "required": true,
-      "min": "0",
-      "default": "0"
-    },
     "introduction": {
       "type": "string",
       "required": true,
@@ -51,40 +45,27 @@
       "targetField": "name",
       "required": true
     },
-    "gender": {
-      "type": "enumeration",
-      "enum": [
-        "Hombre",
-        "Mujer"
-      ],
-      "default": "Hombre",
-      "required": true
-    },
-    "stocksize9": {
-      "type": "biginteger",
-      "default": "0"
-    },
-    "stocksize8": {
-      "type": "biginteger",
-      "default": "0"
-    },
-    "stocksize7": {
-      "type": "biginteger",
-      "default": "0"
-    },
-    "company": {
-      "type": "enumeration",
-      "enum": [
-        "Nike",
-        "Adidas"
-      ],
-      "default": "Nike"
-    },
     "colors": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::color.color",
       "mappedBy": "products"
+    },
+    "discount": {
+      "type": "biginteger"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    },
+    "sizes": {
+      "type": "json"
     }
   }
 }
